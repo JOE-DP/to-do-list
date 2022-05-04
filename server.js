@@ -2,6 +2,7 @@ require('dotenv').config()
 
 const express = require('express')
 const http = require('http')
+const { resourceUsage } = require('process')
 const app = express()
 
 //mongo DB set up
@@ -22,8 +23,9 @@ app.set('view engine', 'ejs')
 // app.use(express.json())
 
 app.get('/', (req, res) => 
-    db.collection('todo').find().toArray()
-        .then(data => res.render('index.ejs', {list: data} ))
+    // db.collection('todo').find().toArray()
+    //     .then(data => res.render('index.ejs', {list: data} ))
+    res.render('index.js')
  )
 
 //  app.post('/addListItem', (req, res) => {
