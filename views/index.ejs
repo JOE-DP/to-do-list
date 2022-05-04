@@ -11,7 +11,17 @@
 <body>
 
     <h1>To Do List</h1>
-
+    <form action="/addListItem" method="POST">
+        <input type="text" name="listItem" placeholder="add item to list">
+        <input type="submit" value="Add to List">
+    </form>
+    <ul>
+    <%for(let i = 0; i < list.length; i++){%>
+        
+        <li><%= list[i].listItem %> <i class="fa-solid fa-dumpster"></i></li>
+        
+        <% } %>
+    </ul>
     
 </body>
 <script src="main.js" defer></script>
