@@ -1,3 +1,8 @@
 i{
     margin-left: 1%;
 }
+
+.completed{
+    color: grey;
+    text-decoration: line-through;
+}

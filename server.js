@@ -1,6 +1,7 @@
 require('dotenv').config()
 
 const express = require('express')
+const res = require('express/lib/response')
 const http = require('http')
 const app = express()
 
@@ -27,9 +28,22 @@ app.get('/', (req, res) =>
  )
 
  app.post('/addListItem', (req, res) => {
-    db.collection('todo').insertOne({'listItem': req.body.listItem, 'completed': false})
+    db.collection('todo').insertOne({'listItem': req.body.listItem, 'completed': 0})
     res.redirect('/')
  })
+
+ app.put('/modifyComplete', async (req, res) => {
+
+    let objNumArr = await db.collection('todo').find().toArray()
+    let objNum = await objNumArr.filter(item => item.listItem == req.body.modifyItem.trim())
+    console.log(objNum[0].completed)
+
+    db.collection('todo').updateOne({listItem: req.body.modifyItem.trim()}, { $set:{
+        completed: Number(objNum[0].completed) + 1
+    }})
+    .then(() => res.json())
+ })
+
 
  app.delete('/deleteItem', (req, res) => {
      db.collection('todo').deleteOne({listItem: req.body.deleteItem.trim()})
