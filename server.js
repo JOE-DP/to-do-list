@@ -22,9 +22,8 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.json())
 
 app.get('/', (req, res) => 
-    // db.collection('todo').find().toArray()
-    //     .then(data => res.render('index.ejs', {list: data} ))
-    res.render('index.ejs')
+    db.collection('todo').find().toArray()
+        .then(data => res.render('index.ejs', {list: data} ))
  )
 
  app.post('/addListItem', (req, res) => {
