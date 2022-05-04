@@ -3,10 +3,6 @@ require('dotenv').config()
 const express = require('express')
 const http = require('http')
 const app = express()
-app.set('view engine', 'ejs')
-app.use(express.static('public'))
-app.use(express.urlencoded({extended: true}))
-app.use(express.json())
 
 //mongo DB set up
 const MongoClient = require('mongodb').MongoClient
@@ -19,6 +15,11 @@ MongoClient.connect(dbConnectionStr)
         console.log(`connected to ${dbName} database`)
         db = client.db(dbName)
     })
+
+app.set('view engine', 'ejs')
+app.use(express.static('public'))
+app.use(express.urlencoded({extended: true}))
+app.use(express.json())
 
 app.get('/', (req, res) => 
     db.collection('todo').find().toArray()
