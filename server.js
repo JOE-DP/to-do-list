@@ -10,7 +10,7 @@ let db
 let dbConnectionStr = process.env.DB_STRING
 let dbName = 'todolist'
 
-MongoClient.connect(dbConnectionStr)
+MongoClient.connect(dbConnectionStr, { useUnifiedTopology : true})
     .then(client => {
         console.log(`connected to ${dbName} database`)
         db = client.db(dbName)
