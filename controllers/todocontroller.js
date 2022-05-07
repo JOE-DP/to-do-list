@@ -24,6 +24,10 @@ todoComplete: async (req, res) => {
         console.log(req.body.deleteItem.trim())
      TodoList.findOneAndDelete({todo: req.body.deleteItem.trim()})
         .then(() => res.json())
- }
+ }, 
+ 
+ todoIndexGet: (req, res) => 
+    TodoList.find()
+        .then(data => res.render('todoindex.ejs', {list: data} ))
 
 }

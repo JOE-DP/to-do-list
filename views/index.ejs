@@ -5,27 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/7a2d0639a4.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="styles.css">
     <title>To Do List</title>
 </head>
 <body>
 
-    <h1>To Do List</h1>
-    <h2>Add new things to the list by clicking the button, mark a task done by clicking it or delete a task by clicking the bin.</h2>
-    <form action="/todo/addListItem" method="POST">
-        <input type="text" name="listItem" placeholder="add item to list">
-        <input type="submit" value="Add to List">
-    </form>
-    <ul>
-    <%for(let i = 0; i < list.length; i++){%>
-        <% if(list[i].completed % 2 == 0){ %>
-        <li><span class="listItem"><%= list[i].todo %></span><i class="fa-solid fa-dumpster"></i></li>
-        <%} else { %>
-        <li><span class="listItem completed"><%= list[i].todo %></span><i class="fa-solid fa-dumpster"></i></li>
-        
-        <% }} %>
-    </ul>
+    <section class="panel">
+    <a href="/todo/"><h1>ToDo List</h1></a>
+</section>
+    
+
     
 </body>
-<script src="main.js" defer></script>
 </html>
