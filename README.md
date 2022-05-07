@@ -1,5 +1,5 @@
 # To Do List
-A To Do List, with the functionality to add, delete and mark tasks complete.
+A To Do List, with the functionality to add, delete and mark tasks complete. I have commented every line of server.js as a learnign exercise.
 
 **Demo: https://jdp-todolist.herokuapp.com/**
 

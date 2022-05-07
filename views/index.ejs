@@ -19,9 +19,9 @@
     <ul>
     <%for(let i = 0; i < list.length; i++){%>
         <% if(list[i].completed % 2 == 0){ %>
-        <li><span class="listItem"><%= list[i].listItem %></span><i class="fa-solid fa-dumpster"></i></li>
+        <li><span class="listItem"><%= list[i].todo %></span><i class="fa-solid fa-dumpster"></i></li>
         <%} else { %>
-        <li><span class="listItem completed"><%= list[i].listItem %></span><i class="fa-solid fa-dumpster"></i></li>
+        <li><span class="listItem completed"><%= list[i].todo %></span><i class="fa-solid fa-dumpster"></i></li>
         
         <% }} %>
     </ul>
