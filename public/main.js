@@ -5,7 +5,7 @@ Array.from(deleteButton).forEach(element => element.addEventListener('click', de
 
 function deleteListItem(click){
     let itemName = click.target.parentNode.textContent
-    fetch('/deleteItem', {
+    fetch('/todo/deleteItem', {
     method: 'delete',
     headers: {'Content-Type': 'application/JSON'}, 
     body: JSON.stringify({'deleteItem': itemName})})
@@ -19,7 +19,7 @@ Array.from(completeButton).forEach(element => element.addEventListener('click', 
 
 function modifyComplete(click){
     let itemName = click.target.parentNode.textContent
-    fetch('/modifyComplete', {
+    fetch('/todo/modifyComplete', {
         method: 'put',
         headers: {'Content-Type': 'application/JSON'},
         body: JSON.stringify({'modifyItem': itemName})

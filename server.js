@@ -5,7 +5,9 @@ require('dotenv').config()
 // import mongoose module and import model file
 
 let mongoose = require('mongoose')
-let TodoList = require('./models/todo')
+// let TodoList = require('./models/todo')
+const indexRoutes = require('./routes/indexroutes')
+const todoRoutes = require('./routes/todoroutes')
 
 // installed and import express module, which is a framework which allows me to create CRUD requests and responses in a streamlined way
 
@@ -50,33 +52,36 @@ app.use(express.urlencoded({extended: true}))
 
 app.use(express.json())
 
-app.get('/', (req, res) => 
-    TodoList.find()
-        .then(data => res.render('index.ejs', {list: data} ))
- )
+// app.get('/', (req, res) => 
+//     TodoList.find()
+//         .then(data => res.render('index.ejs', {list: data} ))
+//  )
 
- app.post('/addListItem', async (req, res) => {
-    // db.collection('todo').insertOne({'listItem': req.body.listItem, 'completed': 0})
-    await TodoList.create({todo: req.body.listItem})
-    res.redirect('/')
- })
-
- app.put('/modifyComplete', async (req, res) => {
-
-    let objNumArr = await TodoList.find()
-    let objNum = await objNumArr.filter(item => item.todo == req.body.modifyItem.trim())
-
-    TodoList.updateOne({todo: req.body.modifyItem.trim()}, { $set:{
-        completed: Number(objNum[0].completed) + 1
-    }})
-    .then(() => res.json())
- })
+app.use('/', indexRoutes)
+app.use('/todo', todoRoutes)
 
 
- app.delete('/deleteItem', (req, res) => {
-     TodoList.deleteOne({listItem: req.body.deleteItem.trim()})
-        .then(() => res.json())
- })
+//  app.post('/addListItem', async (req, res) => {
+//     await TodoList.create({todo: req.body.listItem})
+//     res.redirect('/')
+//  })
+
+//  app.put('/modifyComplete', async (req, res) => {
+
+//     let objNumArr = await TodoList.find()
+//     let objNum = await objNumArr.filter(item => item.todo == req.body.modifyItem.trim())
+
+//     TodoList.updateOne({todo: req.body.modifyItem.trim()}, { $set:{
+//         completed: Number(objNum[0].completed) + 1
+//     }})
+//     .then(() => res.json())
+//  })
+
+
+//  app.delete('/deleteItem', (req, res) => {
+//      TodoList.deleteOne({listItem: req.body.deleteItem.trim()})
+//         .then(() => res.json())
+//  })
 
 
 const PORT = 5003
